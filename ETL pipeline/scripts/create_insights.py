@@ -13,8 +13,7 @@ FROM ppr_clean_all
 GROUP BY county
 """
 
-# Execute and commit
-session.execute(query)
-session.commit()
-    
-print("Data exported:", f"{base_path}/insights_export/InsightsExport_202102.xlsx")
+def main():
+       session.execute(query)
+       session.commit()
+       print("Data exported:", f"{base_path}/insights_export/InsightsExport_202102.xlsx")
