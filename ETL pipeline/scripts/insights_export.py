@@ -1,17 +1,17 @@
 from datetime import datetime
-import os
-
 from common.base import session
 from common.tables import PprCleanAll
+from common.queries import insight_query
 import xlsxwriter
+import os
 
 
-# Settings
-base_path = os.path.abspath(__file__ + "/../../")
+def main():
+    # Create the insights view if not already created
+    create_insights_view()
 
-if __name__ == "__main__":
     # Retrieve all the data needed to build the monthly insights
-    data = session.execute("SELECT * FROM insights").all()
+    data = session.execute(insight_query).all()
     ref_month = datetime.today().strftime("%Y-%m")
     
     # Create the workbook
@@ -41,3 +41,6 @@ if __name__ == "__main__":
     workbook.close()
     
     print("Data exported:", f"{base_path}/insights_export/InsightsExport_202102.xlsx")
+
+if __name__ == "__main__":
+    main()
