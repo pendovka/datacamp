@@ -16,4 +16,4 @@ GROUP BY county
 def main():
        session.execute(query)
        session.commit()
-       print("Data exported:", f"{base_path}/insights_export/InsightsExport_202102.xlsx")
+       print("Insights view created")
