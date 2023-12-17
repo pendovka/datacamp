@@ -5,3 +5,6 @@ def main():
        session.execute(insight_query)
        session.commit()
        print("Insights view created")
+       
+if __name__ == "__main__":
+    main()
